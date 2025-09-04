@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { AppComponent } from './app.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +8,4 @@ import { AppComponent } from './app.component';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  mein naei
 }
