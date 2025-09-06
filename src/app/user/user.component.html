@@ -1,8 +1,10 @@
+<!--Das HTML-Template sollte möglichst einfach und übersichtlich gehalten werden, um die Wartbarkeit und Lesbarkeit des Codes zu gewährleisten.-->
 <div>
+  <!--Hier wenden wir Event-Binding an, um auf das Klick-Ereignis (click) des Buttons zu reagieren und die Methode onSelectedUser() im Component-Code auszuführen.-->
   <button (click)="onSelectedUser()">
-    <img [src]="imagePath"
-         [alt]="selectedUser.name"
-    />
-    <span> {{ selectedUser.name }} </span>
+    <!--Hier wenden wir Property-Binding an, um das Bild dynamisch über die Variable "imagePath" zu laden. Änderungen an "imagePath" werden automatisch im Template übernommen.-->
+    <img [src]="imagePath" [alt]="selectedUser().name"/>
+    <!--Hier haben wir String-Interpolation im Template um dynamische Elemente anzeigen zu können. Um das Value "name" der Variable "selectedUser", dessen Wert "DUMMY_USERS" in einem signal containisiert ist, zu lesen, werden Klammern hinzugefügt.-->
+    <span> {{ selectedUser().name }} </span>
   </button>
 </div>
