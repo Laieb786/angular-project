@@ -7,30 +7,33 @@
         [avatar]="users[0].avatar"
         [name]="users[0].name"
         [id]="users[0].id"
-        (select)="onSelectedUser($event)"/>
+        (select)="onSelectUser($event)"/> <!-- In Angular ermöglicht $event den Zugriff auf die vom Child-Component emittierten Daten. Das @Output() im app-user Component sendet Werte über einen EventEmitter, die hier als $event empfangen und an onSelectUser() weitergegeben werden. -->
     </li>
     <li>
       <app-user
         [avatar]="users[1].avatar"
         [name]="users[1].name"
         [id]="users[1].id"
-        (select)="onSelectedUser($event)"/>
+        (select)="onSelectUser($event)"/>
     </li>
     <li>
       <app-user
         [avatar]="users[2].avatar"
         [name]="users[2].name"
         [id]="users[2].id"
-        (select)="onSelectedUser($event)"/>
+        (select)="onSelectUser($event)"/>
     </li>
     <li>
       <app-user
         [avatar]="users[3].avatar"
         [name]="users[3].name"
         [id]="users[3].id"
-        (select)="onSelectedUser($event)"/>
+        (select)="onSelectUser($event)"/>
     </li>
   </ul>
+
+  <app-task [selectedUser]="selectedUser.name"/>
+
 </main>
 
 
