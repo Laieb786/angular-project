@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -7,5 +7,9 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
-  @Input({required: true}) selectedUser!: string;
+  // Das Fragezeichen markiert die Property als optional. Das bedeutet, dass selectedUser entweder vom Typ string sein kann oder undefined. Die Komponente funktioniert also auch, wenn kein Wert übergeben wird.
+  @Input() selectedUser?: string ;
+
+  //Alternative Schreibweise: Explizite Union mit undefined statt optionalem Fragezeichen
+  //@Input() selectedUser: string | undefined;
 }
