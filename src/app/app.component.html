@@ -2,31 +2,28 @@
 
 <main>
   <ul id="user">
-    <li>
-      <app-user
-        [user]="users[0]"
-        (select)="onSelectUser($event)"/>
-      <!-- In Angular ermöglicht $event den Zugriff auf die vom Child-Component emittierten Daten. Das @Output() im app-user Component sendet Werte über einen EventEmitter, die hier als $event empfangen und an onSelectUser() weitergegeben werden. -->
-    </li>
-    <li>
-      <app-user
-        [user]="users[1]"
-        (select)="onSelectUser($event)"/>
-    </li>
-    <li>
-      <app-user
-        [user]="users[2]"
-        (select)="onSelectUser($event)"/>
-    </li>
-    <li>
-      <app-user
-        [user]="users[3]"
-        (select)="onSelectUser($event)"/>
-    </li>
+    <!-- @for ist das neue Angular-Control-Flow (ab v17). Es läuft über alle Einträge in users.
+         Für jeden user wird ein <li> mit der Child-Component <app-user> erzeugt.
+         track user.id sagt Angular, dass jedes Listen-Element über seine id erkannt wird,
+         damit nur tatsächlich geänderte Elemente neu aufgebaut werden (bessere Performance).-->
+    @for (user of users; track user.id) {
+      <li>
+        <app-user
+          [user]="user"
+          (select)="onSelectUser($event)"/>
+        <!-- In Angular ermöglicht $event den Zugriff auf die vom Child-Component emittierten Daten. Das @Output() im app-user Component sendet Werte über einen EventEmitter, die hier als $event empfangen und an onSelectUser() weitergegeben werden. -->
+      </li>
+    }
   </ul>
 
-  <app-task [selectedUser]="selectedUser?.name"/>
-
+  @if (selectedUser) {
+    <app-tasks
+      [name]="selectedUser.name"
+      [userId]="selectedUser.id"
+    />
+  } @else {
+    <p id="fallback">Choose a user from the list!</p>
+  }
 </main>
 
 

@@ -2,18 +2,19 @@ import {Component} from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import {UserComponent} from './user/user.component';
 import {DUMMY_USERS} from './dummy-users';
-import {TaskComponent} from './tasks/task.component';
+import {TasksComponent} from './user-tasks-list/container/tasks/tasks.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, UserComponent, TaskComponent],
+  imports: [HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   // Initialisiert das users-Array mit Dummy-Daten und setzt die selectedUserId auf die ID des ersten Users.
   users = DUMMY_USERS;
-  selectedUserId = this.users[0].id;
+  selectedUserId?: string;
 
   //Dieser Code ist ein Getter, der den aktuell ausgewählten User aus dem users-Array zurückgibt, indem er nach der selectedUserId sucht. Das ! am Ende bedeutet, dass TypeScript garantiert wird, dass ein User gefunden wird.
   get selectedUser() {
