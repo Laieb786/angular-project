@@ -19,7 +19,7 @@ Macht das Gleiche wie type, ABER: Du kannst es später erweitern (z.B. in einer 
 Wird oft in größeren Projekten verwendet, wenn mehrere Entwickler am Code arbeiten
  */
 
-interface User {
+export interface User {
   id: string;
   name: string;
   avatar: string;

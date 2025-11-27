@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {User} from './models/user.model';
 
 @Component({
   selector: 'app-user',
@@ -24,6 +25,12 @@ export class UserComponent {
   Nachteil: Angular kann nicht automatisch erkennen, wann sich der Wert ändert - die Change Detection prüft dies manuell.
   */
   @Input({required: true}) user!: User;
+
+  // Der Typ ist boolean, weil diese Property anzeigt, ob der aktuelle User ausgewählt ist oder nicht – es gibt nur zwei Zustände:
+  // true = der User ist ausgewählt
+  // false = der User ist nicht ausgewählt
+  @Input({required: true}) selected!: boolean;
+
   @Output() select = new EventEmitter<string>();
 
   get imagePath() {
@@ -50,7 +57,6 @@ export class UserComponent {
   // imagePath = computed(() => {
   //   return 'assets/users/' + this.avatar();
   // });
-
 
   // Benennungen für Methodiken, die für ein bestimmtes Event/Trigger aufgerufen werden, beginnen mit dem Präfix "on".
   onSelectedUser() {

@@ -10,6 +10,7 @@
       <li>
         <app-user
           [user]="user"
+          [selected]="user.id === selectedUserId"
           (select)="onSelectUser($event)"/>
         <!-- In Angular ermöglicht $event den Zugriff auf die vom Child-Component emittierten Daten. Das @Output() im app-user Component sendet Werte über einen EventEmitter, die hier als $event empfangen und an onSelectUser() weitergegeben werden. -->
       </li>
